@@ -1,13 +1,22 @@
+"use client";
+
 // Importing needed component
 import Image from "next/image";
+import {
+  GoChevronRight as Rightarrow,
+  GoChevronLeft as LeftArrow,
+  GoDash as DashLine,
+} from "react-icons/go";
+import { useState } from "react";
 import Link from "next/link";
 import { FaInstagram } from "react-icons/fa";
 import { Container, Button, Row, Col, Card, CardBody } from "react-bootstrap";
-import Navbar from "../../components/navbar/Navbar";
-import Footer from "../../components/footer/Footer";
+import Navbar from "@/components/navbar/Navbar";
+import Footer from "@/components/footer/Footer";
 import styles from "./Home.module.css";
+import { motion, AnimatePresence } from "framer-motion";
 
-// Foto nya semua
+// Foto assets
 import fotoBersama from "../../../public/assets/images/foto-mereka/FotoSamaAnak-Anak.jpg";
 import Aflah from "../../../public/assets/images/foto-mereka/FotoNaAflah.jpg";
 import Fatim from "../../../public/assets/images/foto-mereka/FotoNaFatim.jpg";
@@ -16,16 +25,19 @@ import Zahra from "../../../public/assets/images/foto-mereka/FotoNaZahra.jpg";
 import Mikail from "../../../public/assets/images/foto-mereka/FotoNaMikail.jpg";
 
 export default function Home() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [direction, setDirection] = useState(1); // 1: next, -1: previous
+
   const bioAnakAnak = [
     {
       image: Aflah,
       name: "Aflah",
-      text: "Nda tau kenapa sekolah i di telkom, jauh na poe rumah na, ada di Sudiang.",
+      text: "Sekolah di telkom padahal rumah na di sudiang.",
     },
     {
       image: Aurinka,
       name: "Aurinka",
-      text: "Orang paling tinggi, titan na diantara kita semua, terus suka bom orang",
+      text: "Orang paling tinggi, mirip cart titan, sama bomber",
     },
     {
       image: Fatim,
@@ -35,7 +47,7 @@ export default function Home() {
     {
       image: Zahra,
       name: "Zahra",
-      text: "Orang bodok yang pergi sekolah di telkom padahal rumah na di Galesong",
+      text: "Orang bodok yang sekolah di telkom galesong poe tinggal",
     },
     {
       image: Mikail,
@@ -45,76 +57,87 @@ export default function Home() {
   ];
 
   const igNyaMasingMasing = [
-    {
-      name: "Aurinka",
-      link: "https://www.instagram.com/aurinka_ma/",
-    },
-    {
-      name: "Fatim",
-      link: "https://www.instagram.com/fatiimtam/",
-    },
-    {
-      name: "Zahra",
-      link: "https://www.instagram.com/zhrarahh/",
-    },
-    {
-      name: "Mikail",
-      link: "https://www.instagram.com/kaiil._/",
-    },
-    {
-      name: "Aflah",
-      link: "https://www.instagram.com/yutaaaax/",
-    },
+    { name: "Aurinka", link: "https://www.instagram.com/aurinka_ma/" },
+    { name: "Fatim", link: "https://www.instagram.com/fatiimtam/" },
+    { name: "Zahra", link: "https://www.instagram.com/zhrarahh/" },
+    { name: "Mikail", link: "https://www.instagram.com/kaiil._/" },
+    { name: "Aflah", link: "https://www.instagram.com/yutaaaax/" },
   ];
+
+  const nextButton = () => {
+    setDirection(1);
+    setActiveIndex((prev) => (prev + 1) % bioAnakAnak.length);
+  };
+
+  const previousButton = () => {
+    setDirection(-1);
+    setActiveIndex(
+      (prev) => (prev - 1 + bioAnakAnak.length) % bioAnakAnak.length
+    );
+  };
+
+  // Framer Motion variants for sliding horizontally
+  const slideVariants = {
+    initial: (direction) => ({
+      x: direction > 0 ? 300 : -300,
+      opacity: 0,
+    }),
+    animate: {
+      x: 10,
+      opacity: 10,
+    },
+
+    exit: (direction) => ({
+      x: direction > 0 ? -300 : 300,
+      opacity: 0,
+    }),
+  };
 
   return (
     <>
-    {/* Navbar */}
       <Navbar />
-      
-      {/* Home content */}
+
+      {/* Home Section */}
       <section
-        className={`${styles.heroSection} vh-100 position-relative`}
+        className={`${styles.fotoBersamaSection} vh-100 position-relative`}
         style={{
-          backgroundImage: `url(${fotoBersama.src})`, // First background image
+          backgroundImage: `url(${fotoBersama.src})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       >
-        {/* Second image overlay */}
-        <div className={styles.secondImageOverlay}>
+        <div className={styles.fotoBersamaOverlay}>
           <Image
             src={fotoBersama}
             alt="Group Photo Overlay"
             layout="fill"
             objectFit="contain"
-            quality={90}
+            quality={100}
             priority
           />
+
+          <Container className="h-100 d-flex position-relative">
+            <div className="text-white d-flex flex-column text-center justify-content-center align-items-center vh-100 w-100">
+              <h1 className="display-3 fw-normal mb-4">
+                Picture with the <br /> Gang
+              </h1>
+
+              <Button variant="outline-light" size="lg">
+                See more
+              </Button>
+            </div>
+          </Container>
         </div>
-
-        <Container className="h-100 d-flex align-items-center position-relative">
-          <div className="text-white text-center w-100">
-            <h1 className="display-3 fw-bold mb-4">
-              Picture with the <br />
-              Gang
-            </h1>
-            <Button variant="outline-light" size="lg">
-              See more
-            </Button>
-          </div>
-        </Container>
       </section>
-
 
       {/* Meeting Point Section */}
       <section className={`py-5 ${styles.ourInfoSection}`}>
         <Container>
           <Row className="g-4">
             <Col md={6}>
-              <h2 className="display-5 fw-bold mb-4">Ketemu di</h2>
+              <h2 className="display-5 mb-4 fw-normal">Ketemu di</h2>
 
-              <p className="lead text-muted">
+              <p className="lead text-muted fs-4">
                 Ini semua nda tau ketemu dari mana, tapi yang pasti di SMK
                 Telkom Makassar dan tiba-tiba ji baku teman ji
               </p>
@@ -124,9 +147,9 @@ export default function Home() {
               <Card bg="primary" text="white" className="h-100 border-0">
                 <CardBody className="d-flex flex-column">
                   <div>
-                    <h3 className="mb-3">Our location</h3>
+                    <h3 className="mb-3 fw-normal">Our location</h3>
 
-                    <address className="mb-4">
+                    <address className="mb-4 fs-5 fw-light">
                       SMK Telkom Makassar
                       <br />
                       Jl. A. P. Pettarani No.109
@@ -146,18 +169,15 @@ export default function Home() {
       </section>
 
       {/* Bio's Section */}
-      <section className="bg-info text-white py-5">
-        <Container className="text-center mb-5">
-          <blockquote className="fs-3 fst-italic">
-            Ini semua bio yang nda jelas untuk masing-masing orang disini
-          </blockquote>
-        </Container>
-
-        <Container fluid className="px-4">
+      <section
+        className={`text-white py-5 bg-secondary bg-gradient ${styles.bioNyaMereka}`}
+      >
+        {/* Desktop Version */}
+        <Container fluid className="px-3 d-none d-md-block">
           <Row className="flex-nowrap overflow-auto gx-4">
             {bioAnakAnak.map((person, index) => (
               <Col md={4} lg={3} key={index} className="px-3 text-center">
-                <div className={styles.bioCard}>
+                <div className="bioCard">
                   <Image
                     src={person.image}
                     alt={person.name}
@@ -165,10 +185,13 @@ export default function Home() {
                     className="img-fluid rounded-3"
                     objectFit="cover"
                   />
+
                   <div className="mt-3">
-                    <h3 className="h2">{person.name}</h3>
-                    <p className="mb-3">{person.text}</p>
-                    <Button variant="dark" className="w-10">
+                    <h3 className="h2 fw-normal">{person.name}</h3>
+
+                    <p className="mb-4 fw-normal">{person.text}</p>
+
+                    <Button variant="dark" className="w-10 rounded-pill">
                       Learn more
                     </Button>
                   </div>
@@ -177,22 +200,79 @@ export default function Home() {
             ))}
           </Row>
         </Container>
+
+        {/* Mobile Version with Animated Slider */}
+        <Container className="d-block d-md-none position-relative mt-4">
+          <div className={styles.sliderContainer}>
+            <Button
+              variant="outline-light"
+              className={`${styles.sliderButton} position-absolute start-0 top-50 translate-middle-y`}
+              style={{ left: "10px" }}
+              onClick={previousButton}
+            >
+              ←
+            </Button>
+
+            <div
+              className="text-center px-4"
+              style={{ position: "relative", height: "100%" }}
+            >
+              <AnimatePresence initial={false} custom={direction}>
+                <motion.div
+                  key={activeIndex}
+                  className={styles["bio-card-mobile"]}
+                  custom={direction}
+                  variants={slideVariants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  transition={{ duration: 0.5 }}
+                >
+                  <Image
+                    src={bioAnakAnak[activeIndex].image}
+                    alt={bioAnakAnak[activeIndex].name}
+                    className="img-fluid rounded-3"
+                    style={{ height: "400px", objectFit: "cover" }}
+                  />
+                  <div className="mt-4">
+                    <h3 className="h2 fw-normal">
+                      {bioAnakAnak[activeIndex].name}
+                    </h3>
+
+                    <p className="mb-4">{bioAnakAnak[activeIndex].text}</p>
+
+                    <Button variant="dark" className="rounded-pill w-10">Learn More</Button>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            <Button
+              variant="outline-light"
+              className={`${styles.sliderButton} position-absolute end-0 top-50 translate-middle-y`}
+              style={{ right: "10px" }}
+              onClick={nextButton}
+            >
+              →
+            </Button>
+          </div>
+        </Container>
       </section>
 
       {/* Social Links Section */}
-      <section className="bg-warning text-white py-5">
+      <section className="bg-warning bg-gradient text-white py-5">
         <Container>
           <Row className="justify-content-center">
             <Col xl={8} className="text-center">
               <h2 className="display-5 mb-5">Link masing-masing instagram</h2>
 
-              <div className="d-flex flex-wrap justify-content-center gap-3">
+              <div className="d-flex flex-wrap justify-content-center">
                 {igNyaMasingMasing.map((account, index) => (
                   <Link key={index} href={account.link} passHref legacyBehavior>
                     <Button
                       as="a"
                       variant="link"
-                      className={`d-flex align-items-center px-4 mx-1 bg-dark text-light ${styles.socialLink}`}
+                      className="d-flex align-items-center px-4 mx-2 mt-2 bg-dark text-light socialLink"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -207,7 +287,6 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* Footer */}
       <Footer />
     </>
   );
