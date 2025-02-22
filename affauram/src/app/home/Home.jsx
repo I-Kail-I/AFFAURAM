@@ -2,20 +2,20 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FaInstagram } from "react-icons/fa";
-import { Container, Button, Row, Col, Card, CardBody,  } from "react-bootstrap";
+import { Container, Button, Row, Col, Card, CardBody } from "react-bootstrap";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 import styles from "./Home.module.css";
 
 // Foto nya semua
-import fotoBersama from "../../assets/images/foto-mereka/FotoSamaAnak-Anak.jpg";
-import Aflah from "../../assets/images/foto-mereka/FotoNaAflah.jpg";
-import Fatim from "../../assets/images/foto-mereka/FotoNaFatim.jpg";
-import Aurinka from "../../assets/images/foto-mereka/FotoNaAurinka.jpg";
-import Zahra from "../../assets/images/foto-mereka/FotoNaZahra.jpg";
-import Mikail from "../../assets/images/foto-mereka/FotoNaMikail.jpg"; // Fixed import
+import fotoBersama from "../../../public/assets/images/foto-mereka/FotoSamaAnak-Anak.jpg";
+import Aflah from "../../../public/assets/images/foto-mereka/FotoNaAflah.jpg";
+import Fatim from "../../../public/assets/images/foto-mereka/FotoNaFatim.jpg";
+import Aurinka from "../../../public/assets/images/foto-mereka/FotoNaAurinka.jpg";
+import Zahra from "../../../public/assets/images/foto-mereka/FotoNaZahra.jpg";
+import Mikail from "../../../public/assets/images/foto-mereka/FotoNaMikail.jpg";
 
-const Home = () => {
+export default function Home() {
   const bioAnakAnak = [
     {
       image: Aflah,
@@ -30,7 +30,7 @@ const Home = () => {
     {
       image: Fatim,
       name: "Fatim",
-      text: "Orang harus dibuang, ka dongo i lowkley chill",
+      text: "Oranng paling tidak bisa mtk, jadi harusna di buang mi saja",
     },
     {
       image: Zahra,
@@ -69,31 +69,43 @@ const Home = () => {
 
   return (
     <>
+    {/* Navbar */}
       <Navbar />
       
-      {/* Hero Section */}
-      <section className={styles.fotoBersamaSection}>
-        <div className={styles.heroBackground}>
+      {/* Home content */}
+      <section
+        className={`${styles.heroSection} vh-100 position-relative`}
+        style={{
+          backgroundImage: `url(${fotoBersama.src})`, // First background image
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        {/* Second image overlay */}
+        <div className={styles.secondImageOverlay}>
           <Image
             src={fotoBersama}
-            alt="Group Photo"
+            alt="Group Photo Overlay"
             layout="fill"
-            objectFit="cover"
+            objectFit="contain"
+            quality={90}
             priority
-            placeholder="blur"
           />
         </div>
-        <Container className="h-100 d-flex align-items-center text-center text-white">
-          <div className={styles.heroContent}>
+
+        <Container className="h-100 d-flex align-items-center position-relative">
+          <div className="text-white text-center w-100">
             <h1 className="display-3 fw-bold mb-4">
-              Picture with the <br /> Gang
+              Picture with the <br />
+              Gang
             </h1>
             <Button variant="outline-light" size="lg">
-              Learn more
+              See more
             </Button>
           </div>
         </Container>
       </section>
+
 
       {/* Meeting Point Section */}
       <section className={`py-5 ${styles.ourInfoSection}`}>
@@ -101,16 +113,19 @@ const Home = () => {
           <Row className="g-4">
             <Col md={6}>
               <h2 className="display-5 fw-bold mb-4">Ketemu di</h2>
+
               <p className="lead text-muted">
                 Ini semua nda tau ketemu dari mana, tapi yang pasti di SMK
                 Telkom Makassar dan tiba-tiba ji baku teman ji
               </p>
             </Col>
+
             <Col md={6}>
-              <Card bg="primary" text="white" className="h-100">
-                <CardBody className="d-flex flex-column justify-content-between">
+              <Card bg="primary" text="white" className="h-100 border-0">
+                <CardBody className="d-flex flex-column">
                   <div>
                     <h3 className="mb-3">Our location</h3>
+
                     <address className="mb-4">
                       SMK Telkom Makassar
                       <br />
@@ -119,7 +134,8 @@ const Home = () => {
                       Makassar, Sulawesi Selatan
                     </address>
                   </div>
-                  <Button variant="outline-light" size="sm">
+
+                  <Button variant="outline-light" size="lg">
                     Get directions
                   </Button>
                 </CardBody>
@@ -136,23 +152,23 @@ const Home = () => {
             Ini semua bio yang nda jelas untuk masing-masing orang disini
           </blockquote>
         </Container>
+
         <Container fluid className="px-4">
           <Row className="flex-nowrap overflow-auto gx-4">
             {bioAnakAnak.map((person, index) => (
-              <Col md={4} lg={3} key={index} className="px-3">
+              <Col md={4} lg={3} key={index} className="px-3 text-center">
                 <div className={styles.bioCard}>
                   <Image
                     src={person.image}
                     alt={person.name}
-                    width={300}
-                    height={400}
+                    style={{ height: "500px" }}
                     className="img-fluid rounded-3"
                     objectFit="cover"
                   />
                   <div className="mt-3">
                     <h3 className="h2">{person.name}</h3>
                     <p className="mb-3">{person.text}</p>
-                    <Button variant="dark" className="w-100">
+                    <Button variant="dark" className="w-10">
                       Learn more
                     </Button>
                   </div>
@@ -168,22 +184,18 @@ const Home = () => {
         <Container>
           <Row className="justify-content-center">
             <Col xl={8} className="text-center">
-              <h2 className="display-5 mb-5">Masing-Masing link instagram</h2>
+              <h2 className="display-5 mb-5">Link masing-masing instagram</h2>
+
               <div className="d-flex flex-wrap justify-content-center gap-3">
                 {igNyaMasingMasing.map((account, index) => (
-                  <Link
-                    key={index}
-                    href={account.link}
-                    passHref
-                    legacyBehavior
-                  >
+                  <Link key={index} href={account.link} passHref legacyBehavior>
                     <Button
                       as="a"
                       variant="link"
-                      className={`d-flex align-items-center ${styles.socialLink}`}
+                      className={`d-flex align-items-center px-4 mx-1 bg-dark text-light ${styles.socialLink}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                    >         
+                    >
                       <FaInstagram className="me-2" />
                       {account.name}
                     </Button>
@@ -195,9 +207,8 @@ const Home = () => {
         </Container>
       </section>
 
+      {/* Footer */}
       <Footer />
     </>
   );
 }
-
-export default Home;

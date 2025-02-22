@@ -25,12 +25,15 @@ export default function Navbar() {
               <NavLink href="#explore" className="text-white">
                 Explore
               </NavLink>
+
               <NavLink href="#visit" className="text-white">
                 Visit
               </NavLink>
+
               <NavLink href="#support" className="text-white">
                 Support
               </NavLink>
+              
               <Button variant="light" className="ms-3">
                 Search
               </Button>

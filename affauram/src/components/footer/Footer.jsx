@@ -2,42 +2,45 @@ import { Container } from "react-bootstrap";
 import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
 import "./Footer.component.css";
 
-const Footer = ()=> {
+const space = "";
+
+const date = () => {
+  let currentDate = new Date();
+  let currentDay = currentDate.getDay();
+  let currentMonth = currentDate.getMonth();
+  let currentYear = currentDate.getFullYear();
+
+  {/* Adding all that to one var */}
+  let combineDate = `${currentMonth} - ${currentDay} - ${currentYear}`;
+  return combineDate;
+};
+
+export default function Footer() {
+  const currentDate = date();
+
   return (
     <footer className="bg-dark text-white py-5">
       <Container>
-        <div className="row">
+        <div className="row justify-content-between d-flex text-center">
           <div className="col-md-3">
             <h5>Support Us</h5>
 
             <ul className="list-unstyled">
               <li>
                 <a href="#" className="text-white-50">
-                  Become a member
+                  Our OVO Accounts
                 </a>
               </li>
 
               <li>
                 <a href="#" className="text-white-50">
-                  Donate now
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div className="col-md-3">
-            <h5>Visit</h5>
-
-            <ul className="list-unstyled">
-              <li>
-                <a href="#" className="text-white-50">
-                  Plan your visit
+                  Our DANA Account
                 </a>
               </li>
 
               <li>
                 <a href="#" className="text-white-50">
-                  Hours
+                  Our Gopay Account
                 </a>
               </li>
             </ul>
@@ -49,29 +52,18 @@ const Footer = ()=> {
             <ul className="list-unstyled">
               <li>
                 <a href="#" className="text-white-50">
-                  Exhibits
-                </a>
-              </li>
-
-              <li>
-                <a href="#" className="text-white-50">
-                  Events
+                  Our Events
                 </a>
               </li>
             </ul>
           </div>
 
           <div className="col-md-3">
-            <h5>Location & Hours</h5>
+            <h5>Location</h5>
 
             <p className="text-white-50">
-              5700 S Lake Shore Dr
-              <br />
-              Chicago, IL 60637
-            </p>
-
-            <p className="text-white-50">
-              Open today from 9:30 a.m. to 4:00 p.m.
+              Indonesia, Makassar, JL Pettarani <br />
+              SMK Telkom Makassar
             </p>
           </div>
         </div>
@@ -86,9 +78,10 @@ const Footer = ()=> {
                 <FaYoutube />
               </div>
             </div>
+
             <div className="col-md-8 text-md-end">
               <small className="text-white-50">
-                © 2023 Museum of Science and Industry, Chicago
+                © {currentDate} Made by Mikail Arianos
               </small>
             </div>
           </div>
@@ -97,5 +90,3 @@ const Footer = ()=> {
     </footer>
   );
 }
-
-export default Footer

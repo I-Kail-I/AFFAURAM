@@ -1,5 +1,4 @@
-import Apps from '../pages/home/Home';
-import './page.module.css'
+import Apps from "./home/Home";
 
 const App = () => {
   return (
