@@ -10,7 +10,9 @@ const date = () => {
   let currentMonth = currentDate.getMonth();
   let currentYear = currentDate.getFullYear();
 
-  {/* Adding all that to one var */}
+  {
+    /* Adding all that to one var */
+  }
   let combineDate = `${currentMonth} - ${currentDay} - ${currentYear}`;
   return combineDate;
 };
@@ -80,8 +82,10 @@ export default function Footer() {
             </div>
 
             <div className="col-md-8 text-md-end">
+              // In Footer.jsx
               <small className="text-white-50">
-                © {currentDate} Made by Mikail Arianos
+                © {currentDate} Made by Mikail Arianos. All photos used with
+                permission.
               </small>
             </div>
           </div>
