@@ -1,0 +1,24 @@
+@media (max-width: 768px) {
+}
+
+@media (max-width: 1300px) {
+  #usernameInput {
+    max-width: 300px;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+#usernameInput {
+  min-width: 100%;
+}
+
+#loginText {
+  margin-top: 20px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+#guestEnter, #resetLink:active {
+  color: black;
+}
+

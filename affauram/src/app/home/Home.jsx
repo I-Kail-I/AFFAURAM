@@ -94,7 +94,7 @@ export default function Home() {
   };
 
   return (
-    <>
+    <div>
       <Navbar />
 
       {/* Home Section */}
@@ -210,7 +210,7 @@ export default function Home() {
               style={{ left: "10px" }}
               onClick={previousButton}
             >
-              ←
+              <LeftArrow />
             </Button>
 
             <div
@@ -241,7 +241,9 @@ export default function Home() {
 
                     <p className="mb-4">{bioAnakAnak[activeIndex].text}</p>
 
-                    <Button variant="dark" className="rounded-pill w-10">Learn More</Button>
+                    <Button variant="dark" className="rounded-pill w-10">
+                      Learn More
+                    </Button>
                   </div>
                 </motion.div>
               </AnimatePresence>
@@ -253,7 +255,7 @@ export default function Home() {
               style={{ right: "10px" }}
               onClick={nextButton}
             >
-              →
+              <Rightarrow />
             </Button>
           </div>
         </Container>
@@ -288,6 +290,6 @@ export default function Home() {
       </section>
 
       <Footer />
-    </>
+    </div>
   );
 }

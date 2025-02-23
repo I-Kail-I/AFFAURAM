@@ -1,11 +1,9 @@
-import Apps from "./home/Home";
+import SignIn from "./signIn/SignIn"
 
-const App = () => {
+export default function Page() {
   return (
     <div>
-      <Apps />
+      <SignIn />
     </div>
-  );
-};
-
-export default App;
+  )
+}
