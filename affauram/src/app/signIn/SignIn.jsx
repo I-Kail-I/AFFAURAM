@@ -52,13 +52,13 @@ export default function SignIn() {
                   <div className="form-group" id={styles.usernameInput}>
                     <FormLabel className="fw-normal fs-4">Username</FormLabel>
 
-                    <FormControl className="fs-5 fw-light" />
+                    <FormControl className="fs-5 fw-light" type="text" />
                   </div>
 
                   <div className="form-group mt-4" id={styles.passwordInput}>
                     <FormLabel className="fw-normal fs-4">Password</FormLabel>
 
-                    <FormControl className="fs-5 fw-light" />
+                    <FormControl className="fs-5 fw-light" type="password" />
                   </div>
 
                   <div className="form-group mt-3 ms-3">

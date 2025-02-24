@@ -1,6 +1,6 @@
 import { Container } from "react-bootstrap";
 import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
-import "./Footer.component.css";
+import styles from "./Footer.module.css"
 
 const space = "";
 
@@ -29,19 +29,19 @@ export default function Footer() {
 
             <ul className="list-unstyled">
               <li>
-                <a href="#" className="text-white-50">
+                <a href="#" className="link-warning   50">
                   Our OVO Accounts
                 </a>
               </li>
 
               <li>
-                <a href="#" className="text-white-50">
+                <a href="#" className="link-warning   50">
                   Our DANA Account
                 </a>
               </li>
 
               <li>
-                <a href="#" className="text-white-50">
+                <a href="#" className="link-warning   50">
                   Our Gopay Account
                 </a>
               </li>
@@ -53,7 +53,7 @@ export default function Footer() {
 
             <ul className="list-unstyled">
               <li>
-                <a href="#" className="text-white-50">
+                <a href="#" className="link-warning   50">
                   Our Events
                 </a>
               </li>
@@ -63,10 +63,10 @@ export default function Footer() {
           <div className="col-md-3">
             <h5>Location</h5>
 
-            <p className="text-white-50">
+            <a href="#" className="link-warning ">
               Indonesia, Makassar, JL Pettarani <br />
               SMK Telkom Makassar
-            </p>
+            </a>
           </div>
         </div>
 
@@ -82,7 +82,6 @@ export default function Footer() {
             </div>
 
             <div className="col-md-8 text-md-end">
-              // In Footer.jsx
               <small className="text-white-50">
                 © {currentDate} Made by Mikail Arianos. All photos used with
                 permission.

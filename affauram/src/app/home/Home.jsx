@@ -1,18 +1,16 @@
 "use client";
-
 // Importing needed component
 import Image from "next/image";
 import {
   GoChevronRight as Rightarrow,
   GoChevronLeft as LeftArrow,
-  GoDash as DashLine,
 } from "react-icons/go";
 import { useState } from "react";
-import Link from "next/link";
 import { FaInstagram } from "react-icons/fa";
 import { Container, Button, Row, Col, Card, CardBody } from "react-bootstrap";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
+import Link from "next/link";
 import styles from "./Home.module.css";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -24,35 +22,40 @@ import Aurinka from "../../../public/assets/images/foto-mereka/FotoNaAurinka.jpg
 import Zahra from "../../../public/assets/images/foto-mereka/FotoNaZahra.jpg";
 import Mikail from "../../../public/assets/images/foto-mereka/FotoNaMikail.jpg";
 
-export default function Home() {
+export default function Home({ onSeeMoreClick }) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [direction, setDirection] = useState(1); // 1: next, -1: previous
+  const [direction, setDirection] = useState(1);
 
   const bioAnakAnak = [
     {
       image: Aflah,
       name: "Aflah",
-      text: "Sekolah di telkom padahal rumah na di sudiang.",
+      text: "Sekolah di telkom padahal rumah na di sudiang dongo bet.",
+      linkBio: "/home/bio-aflah",
     },
     {
       image: Aurinka,
       name: "Aurinka",
-      text: "Orang paling tinggi, mirip cart titan, sama bomber",
+      text: "Orang paling tinggi, mirip cart titan, sama bomber juga",
+      linkBio: "/home/bio-aurinka",
     },
     {
       image: Fatim,
       name: "Fatim",
       text: "Oranng paling tidak bisa mtk, jadi harusna di buang mi saja",
+      linkBio: "/home/bio-fatim",
     },
     {
       image: Zahra,
       name: "Zahra",
       text: "Orang bodok yang sekolah di telkom galesong poe tinggal",
+      linkBio: "/home/bio-zahra",
     },
     {
       image: Mikail,
       name: "Mikail",
       text: "Orang Paling toxic se dunia, pembuat na dajjal juga ini",
+      linkBio: "/home/bio-mikail",
     },
   ];
 
@@ -83,10 +86,9 @@ export default function Home() {
       opacity: 0,
     }),
     animate: {
-      x: 10,
-      opacity: 10,
+      x: 0,
+      opacity: 1,
     },
-
     exit: (direction) => ({
       x: direction > 0 ? -300 : 300,
       opacity: 0,
@@ -122,7 +124,11 @@ export default function Home() {
                 Picture with the <br /> Gang
               </h1>
 
-              <Button variant="outline-light" size="lg">
+              <Button
+                variant="outline-light"
+                size="lg"
+                onClick={() => onSeeMoreClick("/home/bio-aurinka")}
+              >
                 See more
               </Button>
             </div>
@@ -191,9 +197,11 @@ export default function Home() {
 
                     <p className="mb-4 fw-normal">{person.text}</p>
 
-                    <Button variant="dark" className="w-10 rounded-pill">
-                      Learn more
-                    </Button>
+                    <Link href={person.linkBio} passHref>
+                      <Button className="w-10 btn btn-dark rounded-pill">
+                        Learn more
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </Col>
@@ -241,9 +249,11 @@ export default function Home() {
 
                     <p className="mb-4">{bioAnakAnak[activeIndex].text}</p>
 
-                    <Button variant="dark" className="rounded-pill w-10">
-                      Learn More
-                    </Button>
+                    <Link href={bioAnakAnak[activeIndex].linkBio} passHref>
+                      <Button className="rounded-pill btn btn-dark w-10">
+                        Learn More
+                      </Button>
+                    </Link>
                   </div>
                 </motion.div>
               </AnimatePresence>
