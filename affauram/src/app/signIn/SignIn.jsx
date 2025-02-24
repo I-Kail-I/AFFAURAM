@@ -64,14 +64,13 @@ export default function SignIn() {
                     <FormCheck label="Remember Me" />
                   </div>
 
-                  <Button
-                    className="mt-4 fs-4 fw-light"
-                    variant="dark"
+                  <Link
+                    className="mt-4 fs-4 fw-light btn btn-dark d-flex align-items-center justify-content-center"
                     href="../home/"
                     style={{ height: "55px" }}
                   >
                     Log In
-                  </Button>
+                  </Link>
                 </Form>
               </Row>
 
