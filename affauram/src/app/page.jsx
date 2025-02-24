@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Loader from "@/components/loading/Loader";
-import Home from "./signIn/page";
+import Index from "./signIn/page";
 
 export default function Page() {
   const [loading, setLoading] = useState(true);
@@ -24,7 +24,7 @@ export default function Page() {
 
   return (
     <div>
-      <Home onSeeMoreClick={handleSeeMoreClick} />
+      <Index onSeeMoreClick={handleSeeMoreClick} />
     </div>
   );
 }

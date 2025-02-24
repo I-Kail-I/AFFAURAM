@@ -15,7 +15,6 @@ export default function ContactUs() {
             style={{ objectFit: "cover" }}
           />
         </Col>
-
         <Col md={6} className="d-flex flex-column justify-content-center">
           <h1 className="mb-4">Contact Us</h1>
           <Form>
@@ -23,27 +22,23 @@ export default function ContactUs() {
               <Form.Label>Full Name</Form.Label>
               <Form.Control type="text" placeholder="Your name" />
             </Form.Group>
-
             <Form.Group className="mb-3" controlId="email">
               <Form.Label>E-mail</Form.Label>
               <Form.Control type="email" placeholder="Your email" />
             </Form.Group>
-
             <Form.Group className="mb-3" controlId="message">
               <Form.Label>Message</Form.Label>
               <Form.Control as="textarea" rows={3} placeholder="Your message" />
             </Form.Group>
-
-            <Button type="submit" variant="dark">Contact Us</Button>
+            <Button type="submit" variant="dark">
+              Contact Us
+            </Button>
           </Form>
-
           <div className="mt-4">
             <h5>Contact</h5>
             <p>Mikailgames121@gmail.com</p>
-
             <h5>Based in</h5>
             <p>Indonesia, Makassar</p>
-
             <div className="d-flex gap-3 mt-3">
               <a href="#" aria-label="Facebook" className="text-dark fs-4">
                 &#xf09a;
