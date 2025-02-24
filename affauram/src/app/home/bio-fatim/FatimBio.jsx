@@ -20,84 +20,104 @@ export default function FatimBio() {
     <div>
       <Navbar />
 
-      <div className="vh-100 d-flex">
-        <Container className="bg-white p-4 rounded shadow-lg">
-          <Row className="d-flex h-100">
-            <Col md={4} lg={3} className="h-100 z-3">
-              <div
-                className="bg-light rounded-3 position-relative overflow-hidden"
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
-                style={{ cursor: "pointer" }}
-              >
-                {isHovered && (
-                  <Container
-                    className="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 d-flex align-items-center justify-content-center text-white"
-                    style={{ zIndex: 3, transition: "opacity 0.5s ease" }}
-                  >
-                    <p
-                      className="fs-4 fw-bold"
-                      style={{ fontFamily: "cursive" }}
-                    >
-                      Stay strong!
-                    </p>
-                  </Container>
-                )}
+      <Container className="shadow-lg">
+        <Row className="align-items-start">
+          {/* Left Column - Content */}
+          <Col md={6} className="pe-md-5 order-1 order-md-0">
+            <h1
+              className="ms-2 fw-bolder mb-5"
+              style={{ fontSize: "45px", color: "#ba3da7" }}
+            >
+              Fathimah Nurul <br />
+              Mosthafavi
+            </h1>
 
-                <Image
-                  src={FatimPictBio}
-                  className="img-fluid position-relative z-1"
-                  alt="Fatim Bio Pict"
-                  style={{
-                    transform: isHovered ? "translateY(0)" : "translateY(10px)",
-                    transition: "transform 0.5s ease",
-                  }}
-                />
-              </div>
-            </Col>
+            <h2 className="text-muted fs-2 mb-4">Depressed Teenager</h2>
 
-            <Col md={8} lg={9}>
-              <div className="mt-5">
-                <h1
-                  className="ms-2 fw-bolder mb-5"
-                  style={{ fontSize: "45px", color: "#ba3da7" }}
-                >
-                  Fathimah Nurul <br />
-                  Mosthafavi
-                </h1>
+            <Link
+              href="https://www.instagram.com/yutaaaax/"
+              className="text-warning ms-3"
+            >
+              <FaInstagram /> Her instagram
+            </Link>
 
-                <h1 className="text-muted fs-2 mb-4">Depressed Teenager</h1>
+            <p className="mt-3 mb-4 fs-5">
+              Orang paling sinis dari semua, tidak pintar tapi pintar, tapi
+              paling realistis dari semua, <br />
+              overhating kepada semua hal, listener bagus, dan multitalenta, dan
+              motto nya <br />
+              adalah,"Hating is my passion"
+            </p>
 
-                <Link
-                  href="https://www.instagram.com/yutaaaax/"
-                  className="text-warning ms-3"
-                >
-                  <FaInstagram /> Her instagram
-                </Link>
-
-                <p className="mt-3 mb-4">
-                  Orang paling sinis dari semua, tidak pintar tapi pintar, tapi
-                  paling realistis dari semua, <br />
-                  overhated kepada semua hal, listener bagus, dan multitalenta
-                </p>
-
+            <Row>
+              <Col lg="5">
                 <h2 className="text-dark">Talent nya</h2>
-                <ul className="list-unstyled">
+                <ul className="list-unstyled fs-5">
                   <li>💃 Hobi Menari</li>
                   <li>🎨 Jago Desain</li>
                   <li>
                     <IoPeopleSharp /> Enak kalo deeptalk
                   </li>
+                  <li>🖼 Jago menggambar</li>
                 </ul>
+              </Col>
 
-                <Button variant="outline-dark" className="mt-3">
-                  Kontak
-                </Button>
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </div>
+              <Col>
+                <h2>Personal Background</h2>
+                <ul className="list-unstyled fs-5">
+                  <li>📚 SMK Telkom</li>
+                  <li>👩 Salah satu paling dongo</li>
+                  <li>🎨 Suka menggambar</li>
+                  <li>💃 Suka menari</li>
+                </ul>
+              </Col>
+            </Row>
+
+            <Button variant="outline-dark" className="mt-3">
+              Kontak
+            </Button>
+          </Col>
+
+          {/* Right Column - Image */}
+          <Col
+            md={6}
+            className="order-0 order-md-1 vh-100 d-flex align-items-center"
+          >
+            <div
+              className="bg-light rounded-3 position-relative overflow-hidden w-100 h-100"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+              style={{ cursor: "pointer",}}
+            >
+              {isHovered && (
+                <Container
+                  className="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 d-flex align-items-center justify-content-center text-white"
+                  style={{ zIndex: 3, transition: "opacity 0.5s ease" }}
+                >
+                  <p className="fs-4 fw-bold" style={{ fontFamily: "cursive" }}>
+                    Stay strong!
+                  </p>
+                </Container>
+              )}
+
+              <Image
+                src={FatimPictBio}
+                className="img-fluid position-relative z-1"
+                alt="Fatim Bio Pict"
+                style={{
+                  transform: isHovered ? "translateY(0)" : "translateY(10px)",
+                  transition: "transform 0.5s ease",
+                  width: "100%",
+                  maxWidth: "300px",
+                  margin: "0 auto", 
+                }}
+                sizes="(max-width: 768px) 100%"
+                fill
+              />
+            </div>
+          </Col>
+        </Row>
+      </Container>
 
       <Footer />
     </div>

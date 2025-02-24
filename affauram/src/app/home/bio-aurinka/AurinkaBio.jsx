@@ -71,9 +71,9 @@ export default function AurinkaBio() {
           </Col>
 
           {/* Right Column - Image */}
-          <Col md={6} className="order-0 order-md-1">
+          <Col md={6} className="order-0 order-md-1 vh-100 d-flex align-items-center">
             <div
-              className="bg-light rounded-3 position-relative overflow-hidden"
+              className="bg-light rounded-3 position-relative overflow-hidden w-100 h-100"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
               style={{ cursor: "pointer" }}
@@ -133,6 +133,7 @@ export default function AurinkaBio() {
                   transition: "transform 0.5s ease",
                 }}
                 sizes="(max-width: 768px) 100%"
+                fill
               />
             </div>
           </Col>

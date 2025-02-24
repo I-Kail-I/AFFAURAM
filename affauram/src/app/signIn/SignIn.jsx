@@ -11,7 +11,6 @@ import {
   FormLabel,
   Form,
   Container,
-  Card,
 } from "react-bootstrap";
 import Link from "next/link";
 import Image from "next/image";
@@ -68,6 +67,7 @@ export default function SignIn() {
                   <Button
                     className="mt-4 fs-4 fw-light"
                     variant="dark"
+                    href="../home/"
                     style={{ height: "55px" }}
                   >
                     Log In
@@ -78,7 +78,7 @@ export default function SignIn() {
               {/* Lower Section */}
               <Row className="mt-4 text-center">
                 <Link
-                  href={"/forgotPassword"}
+                  href="/forgotPassword"
                   className="fs-5 link-warning"
                   id={styles.resetLink}
                 >

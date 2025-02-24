@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Loader from "@/components/loading/Loader";
-import Home from "./home/Home";
+import Home from "./signIn/page";
 
 export default function Page() {
   const [loading, setLoading] = useState(true);
