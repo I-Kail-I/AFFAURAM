@@ -117,7 +117,6 @@ export default function Home({ onSeeMoreClick }) {
             quality={100}
             priority
           />
-
           <Container className="h-100 d-flex position-relative">
             <div className="text-white d-flex flex-column text-center justify-content-center align-items-center vh-100 w-100">
               <h1 className="display-3 fw-normal mb-4">
