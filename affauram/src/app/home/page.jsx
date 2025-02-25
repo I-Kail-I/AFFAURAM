@@ -287,7 +287,7 @@ export default function Home({ onSeeMoreClick }) {
                       legacyBehavior
                     >
                       <Button
-                        as="a"
+                        as="address"
                         variant="link"
                         className="d-flex align-items-center px-4 mx-2 mt-2 bg-dark link-light socialLink"
                         target="_blank"

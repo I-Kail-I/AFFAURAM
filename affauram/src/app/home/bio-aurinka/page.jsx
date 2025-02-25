@@ -76,7 +76,7 @@ export default function AurinkaBio() {
               className="bg-light rounded-3 position-relative overflow-hidden w-100 h-100"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
-              style={{ cursor: "pointer" }}
+              style={{ cursor: "default" }}
             >
               {/* Overlay */}
               {isHovered && (

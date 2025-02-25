@@ -79,7 +79,7 @@ export default function FatimBio() {
           <Col md={6} className="order-1 order-md-2 mb-5 mb-md-0">
             <div
               className="bg-light rounded-3 position-relative overflow-hidden"
-              style={{ minHeight: "500px", cursor: "pointer" }}
+              style={{ minHeight: "500px", cursor: "default" }}
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
@@ -87,7 +87,7 @@ export default function FatimBio() {
                 src={FatimPictBio}
                 alt="Fatim Bio Pict"
                 fill
-                className="object-fit-cover position-absolute rounded"
+                className="object-fit-cover position-relative rounded"
                 style={{
                   transform: isHovered ? "translateY(0)" : "translateY(10px)",
                   transition: "transform 0.5s ease",
@@ -96,7 +96,7 @@ export default function FatimBio() {
 
               {isHovered && (
                 <div
-                  className="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 d-flex align-items-center justify-content-center text-white"
+                  className="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 d-flex align-items-center justify-content-center text-white "
                   style={{ zIndex: 2 }}
                 >
                   <p
