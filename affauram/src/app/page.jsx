@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Loader from "@/components/loading/Loader";
-import Index from "./signIn/page";
+import Index from "@/app/signIn/page";
 
 export default function Page() {
   const [loading, setLoading] = useState(true);
@@ -23,8 +23,8 @@ export default function Page() {
   };
 
   return (
-    <body>
+    <div>
       <Index onSeeMoreClick={handleSeeMoreClick} />
-    </body>
+    </div>
   );
 }

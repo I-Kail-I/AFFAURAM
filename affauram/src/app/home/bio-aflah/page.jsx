@@ -1,7 +1,12 @@
-"use client";
+import React from 'react'
+import styles from "./AflahBio.module.css"
 
-import AflahBio from "./AflahBio";
-
-export default function Page() {
-  return <AflahBio />;
+export default function AflahBio() {
+  return (
+    <div>
+      <div className="vh-100">
+        
+      </div>
+    </div>
+  )
 }

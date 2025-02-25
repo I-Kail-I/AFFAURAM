@@ -1,6 +1,9 @@
-import React from "react";
-import MikailBio from "./MikailBio";
+import React from 'react'
 
-export default function page() {
-  return <MikailBio />;
+export default function MikailBio() {
+  return (
+    <div>
+      
+    </div>
+  )
 }
