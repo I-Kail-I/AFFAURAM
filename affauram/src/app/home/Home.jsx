@@ -99,204 +99,211 @@ export default function Home({ onSeeMoreClick }) {
     <div>
       <Navbar />
 
-      {/* Home Section */}
-      <section
-        className={`${styles.fotoBersamaSection} vh-100 position-relative`}
-        style={{
-          backgroundImage: `url(${fotoBersama.src})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className={styles.fotoBersamaOverlay}>
-          <Image
-            src={fotoBersama}
-            alt="Group Photo Overlay"
-            layout="fill"
-            objectFit="contain"
-            quality={100}
-            priority
-          />
-          <Container className="h-100 d-flex position-relative">
-            <div className="text-white d-flex flex-column text-center justify-content-center align-items-center vh-100 w-100">
-              <h1 className="display-3 fw-normal mb-4">
-                Picture with the <br /> Gang
-              </h1>
+      <home>
+        {/* Home Section */}
+        <section
+          className={`${styles.fotoBersamaSection} vh-100 position-relative`}
+          style={{
+            backgroundImage: `url(${fotoBersama.src})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          <div className={styles.fotoBersamaOverlay}>
+            <Image
+              src={fotoBersama}
+              alt="Group Photo Overlay"
+              layout="fill"
+              objectFit="contain"
+              quality={100}
+              priority
+            />
+            <Container className="h-100 d-flex position-relative">
+              <div className="text-white d-flex flex-column text-center justify-content-center align-items-center vh-100 w-100">
+                <h1 className="display-3 fw-normal mb-4">
+                  Picture with the <br /> Gang
+                </h1>
+
+                <Button
+                  variant="outline-light"
+                  size="lg"
+                  onClick={() => onSeeMoreClick("/home/bio-aurinka")}
+                >
+                  See more
+                </Button>
+              </div>
+            </Container>
+          </div>
+        </section>
+
+        {/* Meeting Point Section */}
+        <section className={`py-5 ${styles.ourInfoSection}`}>
+          <Container>
+            <Row className="g-4">
+              <Col md={6}>
+                <h2 className="display-5 mb-4 fw-normal">Ketemu di</h2>
+
+                <p className="lead text-muted fs-4">
+                  Ini semua nda tau ketemu dari mana, tapi yang pasti di SMK
+                  Telkom Makassar dan tiba-tiba ji baku teman ji
+                </p>
+              </Col>
+
+              <Col md={6}>
+                <Card bg="primary" text="white" className="h-100 border-0">
+                  <CardBody className="d-flex flex-column">
+                    <div>
+                      <h3 className="mb-3 fw-normal">Our location</h3>
+
+                      <address className="mb-4 fs-5 fw-light">
+                        SMK Telkom Makassar
+                        <br />
+                        Jl. A. P. Pettarani No.109
+                        <br />
+                        Makassar, Sulawesi Selatan
+                      </address>
+                    </div>
+
+                    <Button variant="outline-light" size="lg">
+                      Get directions
+                    </Button>
+                  </CardBody>
+                </Card>
+              </Col>
+            </Row>
+          </Container>
+        </section>
+
+        {/* Bio's Section */}
+        <section
+          className={`text-white py-5 bg-secondary bg-gradient ${styles.bioNyaMereka}`}
+        >
+          {/* Desktop Version */}
+          <Container fluid className="px-3 d-none d-md-block">
+            <Row className="flex-nowrap overflow-auto gx-4">
+              {bioAnakAnak.map((person, index) => (
+                <Col md={4} lg={3} key={index} className="px-3 text-center">
+                  <div className="bioCard">
+                    <Image
+                      src={person.image}
+                      alt={person.name}
+                      style={{ height: "500px" }}
+                      className="img-fluid rounded-3"
+                      objectFit="cover"
+                    />
+
+                    <div className="mt-3">
+                      <h3 className="h2 fw-normal">{person.name}</h3>
+
+                      <p className="mb-4 fw-normal">{person.text}</p>
+
+                      <Link href={person.linkBio} passHref>
+                        <Button className="w-10 btn btn-dark rounded-pill">
+                          Learn more
+                        </Button>
+                      </Link>
+                    </div>
+                  </div>
+                </Col>
+              ))}
+            </Row>
+          </Container>
+
+          {/* Mobile Version with Animated Slider */}
+          <Container className="d-block d-md-none position-relative mt-4">
+            <div className={styles.sliderContainer}>
+              <Button
+                variant="outline-light"
+                className={`${styles.sliderButton} position-absolute start-0 top-50 translate-middle-y`}
+                style={{ left: "10px" }}
+                onClick={previousButton}
+              >
+                <LeftArrow />
+              </Button>
+
+              <div
+                className="text-center px-4"
+                style={{ position: "relative", height: "100%" }}
+              >
+                <AnimatePresence initial={false} custom={direction}>
+                  <motion.div
+                    key={activeIndex}
+                    className={styles["bio-card-mobile"]}
+                    custom={direction}
+                    variants={slideVariants}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                    transition={{ duration: 0.5 }}
+                  >
+                    <Image
+                      src={bioAnakAnak[activeIndex].image}
+                      alt={bioAnakAnak[activeIndex].name}
+                      className="img-fluid rounded-3"
+                      style={{ height: "400px", objectFit: "cover" }}
+                    />
+                    <div className="mt-4">
+                      <h3 className="h2 fw-normal">
+                        {bioAnakAnak[activeIndex].name}
+                      </h3>
+
+                      <p className="mb-4">{bioAnakAnak[activeIndex].text}</p>
+
+                      <Link href={bioAnakAnak[activeIndex].linkBio} passHref>
+                        <Button className="rounded-pill btn btn-dark w-10">
+                          Learn More
+                        </Button>
+                      </Link>
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
 
               <Button
                 variant="outline-light"
-                size="lg"
-                onClick={() => onSeeMoreClick("/home/bio-aurinka")}
+                className={`${styles.sliderButton} position-absolute end-0 top-50 translate-middle-y`}
+                style={{ right: "10px" }}
+                onClick={nextButton}
               >
-                See more
+                <Rightarrow />
               </Button>
             </div>
           </Container>
-        </div>
-      </section>
+        </section>
 
-      {/* Meeting Point Section */}
-      <section className={`py-5 ${styles.ourInfoSection}`}>
-        <Container>
-          <Row className="g-4">
-            <Col md={6}>
-              <h2 className="display-5 mb-4 fw-normal">Ketemu di</h2>
+        {/* Social Links Section */}
+        <section className="bg-warning bg-gradient text-white py-5">
+          <Container>
+            <Row className="justify-content-center">
+              <Col xl={8} className="text-center">
+                <h2 className="display-5 mb-5">Link masing-masing instagram</h2>
 
-              <p className="lead text-muted fs-4">
-                Ini semua nda tau ketemu dari mana, tapi yang pasti di SMK
-                Telkom Makassar dan tiba-tiba ji baku teman ji
-              </p>
-            </Col>
-
-            <Col md={6}>
-              <Card bg="primary" text="white" className="h-100 border-0">
-                <CardBody className="d-flex flex-column">
-                  <div>
-                    <h3 className="mb-3 fw-normal">Our location</h3>
-
-                    <address className="mb-4 fs-5 fw-light">
-                      SMK Telkom Makassar
-                      <br />
-                      Jl. A. P. Pettarani No.109
-                      <br />
-                      Makassar, Sulawesi Selatan
-                    </address>
-                  </div>
-
-                  <Button variant="outline-light" size="lg">
-                    Get directions
-                  </Button>
-                </CardBody>
-              </Card>
-            </Col>
-          </Row>
-        </Container>
-      </section>
-
-      {/* Bio's Section */}
-      <section
-        className={`text-white py-5 bg-secondary bg-gradient ${styles.bioNyaMereka}`}
-      >
-        {/* Desktop Version */}
-        <Container fluid className="px-3 d-none d-md-block">
-          <Row className="flex-nowrap overflow-auto gx-4">
-            {bioAnakAnak.map((person, index) => (
-              <Col md={4} lg={3} key={index} className="px-3 text-center">
-                <div className="bioCard">
-                  <Image
-                    src={person.image}
-                    alt={person.name}
-                    style={{ height: "500px" }}
-                    className="img-fluid rounded-3"
-                    objectFit="cover"
-                  />
-
-                  <div className="mt-3">
-                    <h3 className="h2 fw-normal">{person.name}</h3>
-
-                    <p className="mb-4 fw-normal">{person.text}</p>
-
-                    <Link href={person.linkBio} passHref>
-                      <Button className="w-10 btn btn-dark rounded-pill">
-                        Learn more
+                <div className="d-flex flex-wrap justify-content-center">
+                  {igNyaMasingMasing.map((account, index) => (
+                    <Link
+                      key={index}
+                      href={account.link}
+                      passHref
+                      legacyBehavior
+                    >
+                      <Button
+                        as="a"
+                        variant="link"
+                        className="d-flex align-items-center px-4 mx-2 mt-2 bg-dark link-light socialLink"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <FaInstagram className="me-2" />
+                        {account.name}
                       </Button>
                     </Link>
-                  </div>
+                  ))}
                 </div>
               </Col>
-            ))}
-          </Row>
-        </Container>
-
-        {/* Mobile Version with Animated Slider */}
-        <Container className="d-block d-md-none position-relative mt-4">
-          <div className={styles.sliderContainer}>
-            <Button
-              variant="outline-light"
-              className={`${styles.sliderButton} position-absolute start-0 top-50 translate-middle-y`}
-              style={{ left: "10px" }}
-              onClick={previousButton}
-            >
-              <LeftArrow />
-            </Button>
-
-            <div
-              className="text-center px-4"
-              style={{ position: "relative", height: "100%" }}
-            >
-              <AnimatePresence initial={false} custom={direction}>
-                <motion.div
-                  key={activeIndex}
-                  className={styles["bio-card-mobile"]}
-                  custom={direction}
-                  variants={slideVariants}
-                  initial="initial"
-                  animate="animate"
-                  exit="exit"
-                  transition={{ duration: 0.5 }}
-                >
-                  <Image
-                    src={bioAnakAnak[activeIndex].image}
-                    alt={bioAnakAnak[activeIndex].name}
-                    className="img-fluid rounded-3"
-                    style={{ height: "400px", objectFit: "cover" }}
-                  />
-                  <div className="mt-4">
-                    <h3 className="h2 fw-normal">
-                      {bioAnakAnak[activeIndex].name}
-                    </h3>
-
-                    <p className="mb-4">{bioAnakAnak[activeIndex].text}</p>
-
-                    <Link href={bioAnakAnak[activeIndex].linkBio} passHref>
-                      <Button className="rounded-pill btn btn-dark w-10">
-                        Learn More
-                      </Button>
-                    </Link>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-
-            <Button
-              variant="outline-light"
-              className={`${styles.sliderButton} position-absolute end-0 top-50 translate-middle-y`}
-              style={{ right: "10px" }}
-              onClick={nextButton}
-            >
-              <Rightarrow />
-            </Button>
-          </div>
-        </Container>
-      </section>
-
-      {/* Social Links Section */}
-      <section className="bg-warning bg-gradient text-white py-5">
-        <Container>
-          <Row className="justify-content-center">
-            <Col xl={8} className="text-center">
-              <h2 className="display-5 mb-5">Link masing-masing instagram</h2>
-
-              <div className="d-flex flex-wrap justify-content-center">
-                {igNyaMasingMasing.map((account, index) => (
-                  <Link key={index} href={account.link} passHref legacyBehavior>
-                    <Button
-                      as="a"
-                      variant="link"
-                      className="d-flex align-items-center px-4 mx-2 mt-2 bg-dark text-light socialLink"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <FaInstagram className="me-2" />
-                      {account.name}
-                    </Button>
-                  </Link>
-                ))}
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </section>
+            </Row>
+          </Container>
+        </section>
+      </home>
 
       <Footer />
     </div>

@@ -1,51 +1,149 @@
-import React from "react";
-import styles from "./ZahraBio.module.css";
-import { Button, Col, Container, Row } from "react-bootstrap";
+"use client";
+
+// Importing needed component
+import { useState } from "react";
+import { Container, Row, Col, Badge, Button } from "react-bootstrap";
+import Image from "next/image";
 import Navbar from "@/components/navbar/Navbar";
+import Footer from "@/components/footer/Footer";
+
+// Importing needed assets
+import ZaharaBioPict from "../../../../public/assets/images/foto-bio/zahra/Genshin logo.png";
 
 export default function ZahraBio() {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <div>
       <Navbar />
 
-      <Container className="vh-100 d-flex align-items-center justify-content-center">
-        <Row className="h-100 w-100">
-          <Row
-            style={{ backgroundColor: "#5880d1" }}
-            className="mt-2 rounded-top-2 h-50"
-            lg={12}
+      <Container className="py-4 shadow-lg">
+        <Row className="align-items-start">
+          {/* Left Column - Content */}
+          <Col md={6} className="pe-md-5 order-1 order-md-0">
+            <h1 className="display-5 mb-4 text-uppercase fw-bold">
+              Aurinka Medina
+            </h1>
+
+            <h2 className="mb-4 fs-3">
+              <Badge bg="dark" className="me-2">
+                Tinggal
+              </Badge>
+              Indonesia, Makassar, Adiyaksa
+            </h2>
+
+            <h3>Titan na X RPL 2</h3>
+
+            <p className="lead mb-4 fs-5">
+              Paling tinggi dari semua, dan juga paling soft spoken <br />
+              di antara semua, freaky dan suka jomok, dan juga kek arab <br />
+              tapi padahal bukan arab
+            </p>
+
+            <div className="mb-4">
+              <h3 className="h2 mb-3">Personal Background</h3>
+              <ul className="list-unstyled fs-5">
+                <li>📚 SMK Telkom</li>
+                <li>👩 Salah satu paling pintar</li>
+                <li>🎨 Suka menggambar</li>
+                <li>🎸 Suka musik</li>
+              </ul>
+            </div>
+
+            <div className="mb-1">
+              <h3 className="h5 mb-2 mt-2">Professional Journey</h3>
+              <p>
+                Suka menggambar jadi kemungkinan bisa jadi nya ke web desaigner{" "}
+                <br />
+                dan juga suka orang kek orang bodok iyya, tapi lowkey chill
+              </p>
+            </div>
+
+            <div className="mt-4 ms-4">
+              <p className="fw-bold fs-5" style={{ fontFamily: "sans-serif" }}>
+                Info kontak
+              </p>
+
+              <Button variant="outline-dark" className="px-4">
+                Kontak
+              </Button>
+            </div>
+          </Col>
+
+          {/* Right Column - Image */}
+          <Col
+            md={6}
+            className="order-0 order-md-1 vh-100 d-flex align-items-center"
           >
-            <Col></Col>
-            <Col>
-              {/* Header row */}
-              <Row>
-                <p
-                  className="fs-1 fw-light mt-5 text-center"
-                  style={{ fontStyle: "italic" }}
+            <div
+              className="bg-light rounded-3 position-relative overflow-hidden w-100 h-100"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+              style={{ cursor: "pointer" }}
+            >
+              {/* Overlay */}
+              {isHovered && (
+                <Container
+                  className="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 d-flex align-items-center justify-content-center text-white bg-light"
+                  style={{ zIndex: 3, transition: "opacity 0.5s ease" }}
                 >
-                  Fatimah Az-Zahra
-                </p>
-                <hr />
-              </Row>
+                  <p className="fs-4 fw-bold" style={{ fontFamily: "cursive" }}>
+                    Sukses ko nanti!
+                  </p>
+                </Container>
+              )}
 
-              {/* Main row */}
-              <Row>
-                <h2
-                  className="mt-3 fs-4 fw-normal text-center"
-                  style={{ fontFamily: "GoogleRaleway" }}
-                >
-                  Orang yang dari Galesong, sekolah di Telkom dari na SMP.
-                  Kerjaan na main game dan top up, tidak tau manage uang
-                </h2>
+              {/* Star Elements */}
+              <div
+                className="position-absolute z-2"
+                style={{
+                  top: "5%",
+                  left: "5%",
+                  transform: "translate(-50%, -50%)",
+                }}
+              >
+                <span className="fs-3">⭐</span>
+              </div>
 
-              
-              </Row>
-            </Col>
-          </Row>
+              <div
+                className="position-absolute z-2"
+                style={{
+                  top: "5%",
+                  right: "5%",
+                  transform: "translate(50%, -50%)",
+                }}
+              >
+                <span className="fs-4">🌟</span>
+              </div>
 
-          <Row style={{ backgroundColor: "#c3cf93"}} className="h-50" lg={12}></Row>
+              <div
+                className="position-absolute z-2"
+                style={{
+                  top: "5%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                }}
+              >
+                <span className="fs-5">✨</span>
+              </div>
+
+              <Image
+                src={ZaharaBioPict}
+                alt="Aurinka Foto"
+                className="img-fluid rounded-3 position-relative z-1"
+                style={{
+                  transform: isHovered ? "translateY(0)" : "translateY(10px)",
+                  transition: "transform 0.5s ease",
+                }}
+                sizes="(max-width: 768px) 100%"
+                fill
+              />
+            </div>
+          </Col>
         </Row>
       </Container>
+
+      <Footer />
     </div>
   );
 }

@@ -1,16 +1,13 @@
 "use client";
 
-// Importing needed component
-import React, { useState } from "react";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { useState } from "react";
+import { Button, Col, Container, Row, Badge } from "react-bootstrap";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
 import { FaInstagram } from "react-icons/fa";
 import { IoPeopleSharp } from "react-icons/io5";
-
-// Importing needed assets
 import FatimPictBio from "../../../../public/assets/images/foto-bio/fatim/FatimBioPict.jpg";
 
 export default function FatimBio() {
@@ -20,38 +17,44 @@ export default function FatimBio() {
     <div>
       <Navbar />
 
-      <Container className="shadow-lg">
-        <Row className="align-items-start">
-          {/* Left Column - Content */}
-          <Col md={6} className="pe-md-5 order-1 order-md-0">
+      <Container className="shadow-lg min-vh-100">
+        <Row className="align-items-center h-100">
+          {/* Content Column */}
+          <Col md={6} className="order-2 order-md-1 pe-md-5">
             <h1
-              className="ms-2 fw-bolder mb-5"
-              style={{ fontSize: "45px", color: "#ba3da7" }}
+              className="fw-bolder mb-3 mt-3"
+              style={{ fontSize: "45px", color: "#e6632c" }}
             >
-              Fathimah Nurul <br />
-              Mosthafavi
+              FATIMAH NURUL <br />
+              MOSTAVHI
             </h1>
 
-            <h2 className="text-muted fs-2 mb-4">Depressed Teenager</h2>
+            <div className="mb-2 mt-4 ">
+              <Badge
+                className="fs-4 bg-dark text-light mb-2"
+                style={{ color: "#363d38" }}
+              >
+                Depressed Teenager
+              </Badge>
+            </div>
 
             <Link
               href="https://www.instagram.com/yutaaaax/"
-              className="text-warning ms-3"
+              className="d-inline-block mb-4 link-dark fw-bold"
             >
-              <FaInstagram /> Her instagram
+              <FaInstagram className="me-1" /> Her instagram
             </Link>
 
-            <p className="mt-3 mb-4 fs-5">
+            <p className="mb-4 fs-5">
               Orang paling sinis dari semua, tidak pintar tapi pintar, tapi
-              paling realistis dari semua, <br />
-              overhating kepada semua hal, listener bagus, dan multitalenta, dan
-              motto nya <br />
-              adalah,"Hating is my passion"
+              paling realistis dari semua, overhating kepada semua hal, listener
+              bagus, dan multitalenta, dan motto nya adalah"Hating is my
+              passion"
             </p>
 
-            <Row>
-              <Col lg="5">
-                <h2 className="text-dark">Talent nya</h2>
+            <Row className="g-4">
+              <Col lg={6}>
+                <h2>Talent nya</h2>
                 <ul className="list-unstyled fs-5">
                   <li>💃 Hobi Menari</li>
                   <li>🎨 Jago Desain</li>
@@ -61,59 +64,49 @@ export default function FatimBio() {
                   <li>🖼 Jago menggambar</li>
                 </ul>
               </Col>
-
-              <Col>
-                <h2>Personal Background</h2>
-                <ul className="list-unstyled fs-5">
-                  <li>📚 SMK Telkom</li>
-                  <li>👩 Salah satu paling dongo</li>
-                  <li>🎨 Suka menggambar</li>
-                  <li>💃 Suka menari</li>
-                </ul>
-              </Col>
             </Row>
 
-            <Button variant="outline-dark" className="mt-3">
-              Kontak
-            </Button>
+            <div className="mt-4 ms-4">
+              <p className="fs-5 fw-bold">Info Kontak</p>
+
+              <Button variant="outline-dark" className="px-4">
+                Kontak
+              </Button>
+            </div>
           </Col>
 
-          {/* Right Column - Image */}
-          <Col
-            md={6}
-            className="order-0 order-md-1 vh-100 d-flex align-items-center"
-          >
+          {/* Image Column */}
+          <Col md={6} className="order-1 order-md-2 mb-5 mb-md-0">
             <div
-              className="bg-light rounded-3 position-relative overflow-hidden w-100 h-100"
+              className="bg-light rounded-3 position-relative overflow-hidden"
+              style={{ minHeight: "500px", cursor: "pointer" }}
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
-              style={{ cursor: "pointer",}}
             >
-              {isHovered && (
-                <Container
-                  className="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 d-flex align-items-center justify-content-center text-white"
-                  style={{ zIndex: 3, transition: "opacity 0.5s ease" }}
-                >
-                  <p className="fs-4 fw-bold" style={{ fontFamily: "cursive" }}>
-                    Stay strong!
-                  </p>
-                </Container>
-              )}
-
               <Image
                 src={FatimPictBio}
-                className="img-fluid position-relative z-1"
                 alt="Fatim Bio Pict"
+                fill
+                className="object-fit-cover position-absolute rounded"
                 style={{
                   transform: isHovered ? "translateY(0)" : "translateY(10px)",
                   transition: "transform 0.5s ease",
-                  width: "100%",
-                  maxWidth: "300px",
-                  margin: "0 auto", 
                 }}
-                sizes="(max-width: 768px) 100%"
-                fill
               />
+
+              {isHovered && (
+                <div
+                  className="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 d-flex align-items-center justify-content-center text-white"
+                  style={{ zIndex: 2 }}
+                >
+                  <p
+                    className="fs-4 fw-bold m-0"
+                    style={{ fontFamily: "cursive" }}
+                  >
+                    Stay strong!
+                  </p>
+                </div>
+              )}
             </div>
           </Col>
         </Row>

@@ -21,7 +21,7 @@ export default function AurinkaBio() {
         <Row className="align-items-start">
           {/* Left Column - Content */}
           <Col md={6} className="pe-md-5 order-1 order-md-0">
-            <h1 className="display-5 mb-4 text-uppercase fw-bold">
+            <h1 className="display-5 mb-4 text-uppercase fw-bold" style={{color: "red"}}>
               Aurinka Medina
             </h1>
 
@@ -41,12 +41,12 @@ export default function AurinkaBio() {
             </p>
 
             <div className="mb-4">
-              <h3 className="h2 mb-3">Personal Background</h3>
+              <h3 className="h2 mb-3">Talent nya</h3>
               <ul className="list-unstyled fs-5">
-                <li>📚 SMK Telkom</li>
-                <li>👩 Salah satu paling pintar</li>
-                <li>🎨 Suka menggambar</li>
-                <li>🎸 Suka musik</li>
+                <li>👩🏼‍🤝‍👩🏻 Soft spoken</li>
+                <li>📚 Salah satu paling pintar</li>
+                <li>🎨 Jago menggambar</li>
+                <li>🎸 Jago musik</li>
               </ul>
             </div>
 
