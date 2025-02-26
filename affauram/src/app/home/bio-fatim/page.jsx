@@ -1,4 +1,4 @@
-"use client";
+  "use client";
 
 import { useState } from "react";
 import { Button, Col, Container, Row, Badge } from "react-bootstrap";
@@ -66,13 +66,13 @@ export default function FatimBio() {
               </Col>
             </Row>
 
-            <div className="mt-4 ms-4">
+            <Row className="mt-4 ms-4">
               <p className="fs-5 fw-bold">Info Kontak</p>
 
-              <Button variant="outline-dark" className="px-4">
+              <Button variant="outline-dark" className="px-4 w-25">
                 Kontak
               </Button>
-            </div>
+            </Row>
           </Col>
 
           {/* Image Column */}

@@ -1,6 +1,7 @@
 "use client";
 
 // Importing needed component
+import styles from "./AurinkaBio.module.css"
 import React, { useState } from "react";
 import { Container, Row, Col, Badge, Button } from "react-bootstrap";
 import Image from "next/image";
@@ -17,11 +18,14 @@ export default function AurinkaBio() {
     <div>
       <Navbar />
 
-      <Container className="py-4 shadow-lg">
-        <Row className="align-items-start">
+      <Container className="py-4 shadow-lg min-vh-100">
+        <Row className="align-items-center h-100">
           {/* Left Column - Content */}
-          <Col md={6} className="pe-md-5 order-1 order-md-0">
-            <h1 className="display-5 mb-4 text-uppercase fw-bold" style={{color: "red"}}>
+          <Col md={6} className="pe-md-5 order-2 order-md-1">
+            <h1
+              className="display-5 mb-4 text-uppercase fw-bold"
+              style={{ color: "red" }}
+            >
               Aurinka Medina
             </h1>
 
@@ -53,88 +57,56 @@ export default function AurinkaBio() {
             <div className="mb-1">
               <h3 className="h5 mb-2 mt-2">Professional Journey</h3>
               <p>
-                Suka menggambar jadi kemungkinan bisa jadi nya ke web desaigner{" "}
+                Suka menggambar jadi kemungkinan bisa jadi nya ke web desaigner
                 <br />
                 dan juga suka orang kek orang bodok iyya, tapi lowkey chill
               </p>
             </div>
 
-            <div className="mt-4 ms-4">
+            <Row className="mt-4 ms-4">
               <p className="fw-bold fs-5" style={{ fontFamily: "sans-serif" }}>
                 Info kontak
               </p>
 
-              <Button variant="outline-dark" className="px-4">
+              <Button variant="outline-dark" className="px-4 w-25">
                 Kontak
               </Button>
-            </div>
+            </Row>
           </Col>
 
           {/* Right Column - Image */}
-          <Col md={6} className="order-0 order-md-1 vh-100 d-flex align-items-center">
+          <Col md={6} className="order-1 order-md-2 mb-5 mb-md-0" 
+              id={styles.imageCol}>
             <div
-              className="bg-light rounded-3 position-relative overflow-hidden w-100 h-100"
+              className="bg-light rounded-3 position-relative overflow-hidden" 
+              style={{ minHeight: "500px", cursor: "default" }}
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
-              style={{ cursor: "default" }}
             >
-              {/* Overlay */}
-              {isHovered && (
-                <Container
-                  className="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 d-flex align-items-center justify-content-center text-white bg-light"
-                  style={{ zIndex: 3, transition: "opacity 0.5s ease" }}
-                >
-                  <p className="fs-4 fw-bold" style={{ fontFamily: "cursive" }}>
-                    Sukses ko nanti!
-                  </p>
-                </Container>
-              )}
-
-              {/* Star Elements */}
-              <div
-                className="position-absolute z-2"
-                style={{
-                  top: "5%",
-                  left: "5%",
-                  transform: "translate(-50%, -50%)",
-                }}
-              >
-                <span className="fs-3">⭐</span>
-              </div>
-
-              <div
-                className="position-absolute z-2"
-                style={{
-                  top: "5%",
-                  right: "5%",
-                  transform: "translate(50%, -50%)",
-                }}
-              >
-                <span className="fs-4">🌟</span>
-              </div>
-
-              <div
-                className="position-absolute z-2"
-                style={{
-                  top: "5%",
-                  left: "50%",
-                  transform: "translate(-50%, -50%)",
-                }}
-              >
-                <span className="fs-5">✨</span>
-              </div>
-
               <Image
                 src={AurinkaBioPhoto}
                 alt="Aurinka Foto"
-                className="img-fluid rounded-3 position-relative z-1"
+                className="object-fit-cover position-relative rounded"
                 style={{
                   transform: isHovered ? "translateY(0)" : "translateY(10px)",
                   transition: "transform 0.5s ease",
                 }}
-                sizes="(max-width: 768px) 100%"
                 fill
               />
+
+              {isHovered && (
+                <div
+                  className="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 d-flex align-items-center justify-content-center text-white"
+                  style={{ zIndex: 2 }}
+                >
+                  <p
+                    className="fs-4 fw-bold m-0"
+                    style={{ fontFamily: "cursive" }}
+                  >
+                    Sukses ko nanti!
+                  </p>
+                </div>
+              )}
             </div>
           </Col>
         </Row>

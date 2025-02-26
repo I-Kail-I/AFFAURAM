@@ -1,13 +1,13 @@
 import { Container } from "react-bootstrap";
 import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
-import styles from "./Footer.module.css"; 
+import styles from "./Footer.module.css";
 import Link from "next/link";
 
 const getCurrentYear = () => new Date().getFullYear();
 
 export default function Footer() {
   return (
-    <footer className="bg-dark text-white mt-auto ">
+    <footer className="bg-dark text-white mt-auto">
       <Container className="py-5">
         <div className="row g-4 mb-4">
           {/* Support Us Section */}
@@ -128,19 +128,35 @@ export default function Footer() {
             <div className="col-12 col-md-6 order-1 order-md-2 mb-3 mb-md-0 text-center text-md-end">
               <div className="d-flex gap-3 justify-content-center justify-content-md-end">
                 {/* Icon section */}
-                <Link href="#" aria-label="Facebook" className={styles.linkFocus}>
+                <Link
+                  href="#"
+                  aria-label="Facebook"
+                  className={styles.linkFocus}
+                >
                   <FaFacebookF />
                 </Link>
 
-                <Link href="#" aria-label="Twitter" className={styles.linkFocus}>
+                <Link
+                  href="#"
+                  aria-label="Twitter"
+                  className={styles.linkFocus}
+                >
                   <FaTwitter />
                 </Link>
 
-                <Link href="#" aria-label="Instagram" className={styles.linkFocus}>
+                <Link
+                  href="#"
+                  aria-label="Instagram"
+                  className={styles.linkFocus}
+                >
                   <FaInstagram />
                 </Link>
 
-                <Link href="#" aria-label="YouTube" className={styles.linkFocus}>
+                <Link
+                  href="#"
+                  aria-label="YouTube"
+                  className={styles.linkFocus}
+                >
                   <FaYoutube />
                 </Link>
               </div>

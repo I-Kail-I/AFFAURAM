@@ -8,7 +8,7 @@ import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
 
 // Importing needed assets
-import ZaharaBioPict from "../../../../public/assets/images/foto-bio/zahra/Genshin logo.png";
+import ZaharaBioPict from "../../../../public/assets/images/foto-bio/zahra/ZahraBio.jpg";
 
 export default function ZahraBio() {
   const [isHovered, setIsHovered] = useState(false);
@@ -59,15 +59,15 @@ export default function ZahraBio() {
               </p>
             </div>
 
-            <div className="mt-4 ms-4">
+            <Row className="mt-4 ms-4">
               <p className="fw-bold fs-5" style={{ fontFamily: "sans-serif" }}>
                 Info kontak
               </p>
 
-              <Button variant="outline-dark" className="px-4">
+              <Button variant="outline-dark" className="px-4 w-25">
                 Kontak
               </Button>
-            </div>
+            </Row>
           </Col>
 
           {/* Right Column - Image */}
@@ -136,7 +136,7 @@ export default function ZahraBio() {
                   transition: "transform 0.5s ease",
                 }}
                 sizes="(max-width: 768px) 100%"
-                fill
+                priority
               />
             </div>
           </Col>

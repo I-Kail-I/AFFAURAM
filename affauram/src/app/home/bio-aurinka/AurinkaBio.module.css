@@ -1,0 +1,6 @@
+@media (max-width: 768px) {
+  #image-container {
+    min-height: auto;
+    height: 300px;
+  }
+}
