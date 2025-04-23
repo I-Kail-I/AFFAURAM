@@ -22,40 +22,38 @@ export default function ZahraBio() {
           {/* Left Column - Content */}
           <Col md={6} className="pe-md-5 order-1 order-md-0">
             <h1 className="display-5 mb-4 text-uppercase fw-bold">
-              Aurinka Medina
+              Fatimah Az-Zahra
             </h1>
 
             <h2 className="mb-4 fs-3">
               <Badge bg="dark" className="me-2">
                 Tinggal
               </Badge>
-              Indonesia, Makassar, Adiyaksa
+              Galesong
             </h2>
 
-            <h3>Titan na X RPL 2</h3>
+            <h3>Pro peler ML na X RPL 2</h3>
 
             <p className="lead mb-4 fs-5">
-              Paling tinggi dari semua, dan juga paling soft spoken <br />
-              di antara semua, freaky dan suka jomok, dan juga kek arab <br />
-              tapi padahal bukan arab
+              Paling batu di anatara semua, jadi paling dongo biasana <br />
+              paling sering sakit diantara semua, nda tau kenapa <br />
             </p>
 
             <div className="mb-4">
               <h3 className="h2 mb-3">Personal Background</h3>
               <ul className="list-unstyled fs-5">
                 <li>📚 SMK Telkom</li>
-                <li>👩 Salah satu paling pintar</li>
-                <li>🎨 Suka menggambar</li>
-                <li>🎸 Suka musik</li>
+                <li>🎮 Jago main MLBB</li>
+                <li>🦐 Suka udang keju</li>
               </ul>
             </div>
 
             <div className="mb-1">
               <h3 className="h5 mb-2 mt-2">Professional Journey</h3>
               <p>
-                Suka menggambar jadi kemungkinan bisa jadi nya ke web desaigner{" "}
+                Lumayan lah tawwa main ML na, dan kalo di nasehati{" "}
                 <br />
-                dan juga suka orang kek orang bodok iyya, tapi lowkey chill
+                tidak batu-batu sekali ji tawwa
               </p>
             </div>
 

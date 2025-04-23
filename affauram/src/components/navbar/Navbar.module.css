@@ -5,3 +5,14 @@
 .navbar.scrolled {
   background-color: rgba(0, 0, 0, 0.9) !important;
 }
+
+/* Custom CSS for active nav links */
+.nav-link.active {
+  color: white !important;
+  font-weight: bold;
+}
+
+/* Optional: Hover effect */
+.nav-link:hover {
+  color:gray !important;
+}

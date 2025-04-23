@@ -99,8 +99,8 @@ export default function Home({ onSeeMoreClick }) {
     <div>
       <Navbar />
 
-      <home>
-        {/* Home Section */}
+      <main>
+        {/* home Section */}
         <section
           className={`${styles.fotoBersamaSection} vh-100 position-relative`}
           style={{
@@ -127,7 +127,7 @@ export default function Home({ onSeeMoreClick }) {
                 <Button
                   variant="outline-light"
                   size="lg"
-                  onClick={() => onSeeMoreClick("/home/bio-aurinka")}
+                  href="home/pict"
                 >
                   See more
                 </Button>
@@ -177,6 +177,7 @@ export default function Home({ onSeeMoreClick }) {
         {/* Bio's Section */}
         <section
           className={`text-white py-5 bg-secondary bg-gradient ${styles.bioNyaMereka}`}
+          id="explore"
         >
           {/* Desktop Version */}
           <Container fluid className="px-3 d-none d-md-block">
@@ -251,7 +252,7 @@ export default function Home({ onSeeMoreClick }) {
 
                       <Link href={bioAnakAnak[activeIndex].linkBio} passHref>
                         <Button className="rounded-pill btn btn-dark w-10">
-                          Learn More
+                          Liat lagi
                         </Button>
                       </Link>
                     </div>
@@ -272,7 +273,7 @@ export default function Home({ onSeeMoreClick }) {
         </section>
 
         {/* Social Links Section */}
-        <section className="bg-warning bg-gradient text-white py-5">
+        <section className="bg-warning bg-gradient text-white py-5" id="visit">
           <Container>
             <Row className="justify-content-center">
               <Col xl={8} className="text-center">
@@ -283,6 +284,7 @@ export default function Home({ onSeeMoreClick }) {
                     <Link
                       key={index}
                       href={account.link}
+                      target="_blank"
                       passHref
                       legacyBehavior
                     >
@@ -303,7 +305,7 @@ export default function Home({ onSeeMoreClick }) {
             </Row>
           </Container>
         </section>
-      </home>
+      </main>
 
       <Footer />
     </div>
